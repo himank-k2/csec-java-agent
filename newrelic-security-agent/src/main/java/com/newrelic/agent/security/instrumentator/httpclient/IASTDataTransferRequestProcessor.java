@@ -3,7 +3,6 @@ package com.newrelic.agent.security.instrumentator.httpclient;
 import com.newrelic.agent.security.AgentConfig;
 import com.newrelic.agent.security.AgentInfo;
 import com.newrelic.agent.security.instrumentator.utils.INRSettingsKey;
-import com.newrelic.agent.security.intcodeagent.exceptions.RestrictionModeException;
 import com.newrelic.agent.security.intcodeagent.filelogging.FileLoggerThreadPool;
 import com.newrelic.agent.security.util.IUtilConstants;
 import com.newrelic.api.agent.security.utils.logging.LogLevel;
@@ -73,11 +72,11 @@ public class IASTDataTransferRequestProcessor {
                 Thread.sleep(cooldownSleepTime);
             }
 
-            if (currentTimestamp - lastFuzzCCTimestamp.get() < TimeUnit.SECONDS.toMillis(5)) {
-                return;
-            }
+//            if (currentTimestamp - lastFuzzCCTimestamp.get() < TimeUnit.SECONDS.toMillis(5)) {
+//                return;
+//            }
 
-            int currentFetchThreshold = Math.round((float) currentFetchThresholdPerMin/12);
+            int currentFetchThreshold = currentFetchThresholdPerMin/12;
             if (currentFetchThreshold <= 0){
                 return;
             }
