@@ -79,8 +79,8 @@ jobs:
           apm-aws-secret-access-key: ${{ secrets.APM_AWS_SECRET_ACCESS_KEY }}
           apm-aws-region: us-east-2
 
-      - name: Publish CSEC to local
-        uses: ./.github/actions/publish-csec-local
+      # - name: Publish CSEC to local
+        # uses: ./.github/actions/publish-csec-local
 
       - name: Run CSEC unit tests
         if: ${{ inputs.run-unit-test == 'true' }}
